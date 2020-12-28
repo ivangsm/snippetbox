@@ -1,3 +1,3 @@
-module github.com/ivangsm/snippetbox
+module ivansalazar.dev/snippetbox
 
 go 1.15
