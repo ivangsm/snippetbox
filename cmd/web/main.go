@@ -22,7 +22,7 @@ type application struct {
 func main() {
 
 	addr := flag.String("addr", ":4000", "HTTP network address")
-	dsn := flag.String("dsn", "web:password-chido@/snippetbox?parseTime=true", "Maria db connection string")
+	dsn := flag.String("dsn", "user:password@/snippetbox?parseTime=true", "MariaDB connection string")
 
 	flag.Parse()
 
@@ -54,7 +54,7 @@ func main() {
 		Handler:  app.routes(),
 	}
 
-	infoLog.Printf("Starting server on %s", *addr)
+	infoLog.Printf("Starting server on http://127.0.0.1%s", *addr)
 	err = srv.ListenAndServe()
 	errorLog.Fatal(err)
 }

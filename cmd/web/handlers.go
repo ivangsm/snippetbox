@@ -23,6 +23,7 @@ func (app *application) home(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, "home.page.tmpl", &templateData{
 		Snippets: s,
 	})
+
 }
 
 func (app *application) showSnippet(w http.ResponseWriter, r *http.Request) {
@@ -44,11 +45,12 @@ func (app *application) showSnippet(w http.ResponseWriter, r *http.Request) {
 	app.render(w, r, "show.page.tmpl", &templateData{
 		Snippet: s,
 	})
+
 }
 
 func (app *application) createSnippet(w http.ResponseWriter, r *http.Request) {
-	if r.Method != "POST" {
-		w.Header().Set("Allow", "POST")
+	if r.Method != http.MethodPost {
+		w.Header().Set("Allow", http.MethodPost)
 		app.clientError(w, http.StatusMethodNotAllowed)
 		return
 	}
